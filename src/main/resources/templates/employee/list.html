@@ -79,7 +79,7 @@
     $(function () {
         App.init();
         $.ajax({
-            url: "getTotal.do",
+            url: "/mall/admin/order/getTotal.do",
             type: "get",
             success: function (result) {
                 if (result.state == 0) {
@@ -102,7 +102,7 @@
     function pageselectCallback(page_index, jq) {
         $.ajax({
             type: "get",
-            url: "list.do?pageindex=" + page_index,
+            url: "/mall/admin/order/list.do?pageindex=" + page_index,
             success: function (result) {
                 if (result.state == 0) {
                     showList(result.data);
@@ -159,7 +159,7 @@
             return;
         }
         $.ajax({
-            url: "getDetail.do?orderId=" + oid,
+            url: "/mall/admin/order/getDetail.do?orderId=" + oid,
             type: "get",
             success: function (result) {
                 if (result.state == 0) {
@@ -188,7 +188,7 @@
             return;
         }
         $.ajax({
-            url: "send.do?id=" + oid,
+            url: "/mall/admin/order/send.do?id=" + oid,
             type: "get",
             success: function (result) {
                 if (result.state == 0) {
