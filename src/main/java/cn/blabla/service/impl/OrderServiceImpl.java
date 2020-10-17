@@ -122,7 +122,24 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderDao.findOne(orderId);
         if (order == null)
             throw new RuntimeException("订单不存在");
-        orderDao.updateState(STATE_WAITE_SEND,order.getId());
+        orderDao.updateState(RREPAREMENT,order.getId());
+    }
+
+    @Override
+    public void receiveOrder(int orderId) {
+        //具体逻辑就不实现了，直接更改状态为 待发货
+        Order order = orderDao.findOne(orderId);
+        if (order == null)
+            throw new RuntimeException("订单不存在");
+        orderDao.updateState(STATE_NO_PAY,order.getId());
+    }
+    @Override
+    public void requestSending(int orderId) {
+        //具体逻辑就不实现了，直接更改状态为 待发货
+        Order order = orderDao.findOne(orderId);
+        if (order == null)
+            throw new RuntimeException("订单不存在");
+        orderDao.updateState(WAIT_TO_SEND,order.getId());
     }
 
     /**
@@ -147,7 +164,7 @@ public class OrderServiceImpl implements OrderService {
         order.setAddr(addr);
         order.setOrderTime(new Date());
         order.setUserId(loginUser.getId());
-        order.setState(STATE_NO_PAY);
+        order.setState(WAIT_TO_ACCEPT);
         List<OrderItem> orderItems = shopCartService.listCart(request);
         Double total = 0.0;
         order.setTotal(total);
@@ -173,6 +190,6 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderDao.findOne(orderId);
         if (order == null)
             throw new RuntimeException("订单不存在");
-        orderDao.updateState(STATE_COMPLETE,order.getId());
+        orderDao.updateState(COMPLETION,order.getId());
     }
 }

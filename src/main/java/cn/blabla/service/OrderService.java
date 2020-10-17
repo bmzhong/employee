@@ -13,12 +13,14 @@ import java.util.List;
 public interface OrderService {
 
     /**
-     * 订单状态 1:未付款 2:等待发货 3:等待收货 4:订单完成
+     * 订单状态 1:等待接收订单 2:未付款 3:备餐中 4:正在请求送餐 5：送餐中 6：订单完成
      */
-    int STATE_NO_PAY = 1;
-    int STATE_WAITE_SEND = 2;
-    int STATE_WAITE_RECEIVE = 3;
-    int STATE_COMPLETE = 4;
+    int WAIT_TO_ACCEPT=1;
+    int STATE_NO_PAY = 2;
+    int RREPAREMENT = 3;
+    int WAIT_TO_SEND = 4;
+    int SENDING = 5;
+    int COMPLETION = 6;
 
 
     /**
@@ -99,6 +101,9 @@ public interface OrderService {
      */
     void pay(int orderId);
 
+    void receiveOrder(int orderId);
+
+     void requestSending(int orderId);
     /**
      * 提交订单
      * @param name
