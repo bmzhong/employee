@@ -93,9 +93,9 @@
                         pagetotal = result.data;
                         $("#Pagination").pagination(pagetotal, {
                             num_edge_entries: 1, //边缘页数
-                            num_display_entries: 5, //主体页数
+                            num_display_entries: 6, //主体页数
                             callback: pageselectCallback,
-                            items_per_page: 15, //每页显示7项
+                            items_per_page: 7, //每页显示6项
                             prev_text: "前一页",
                             next_text: "后一页"
                         });
@@ -182,7 +182,7 @@
                 operter.append($("<button onclick='pay(" + data[i].id + " )'  class='btn'  style='background-color: fuchsia'>付款</button>"));
             }
             if (state === 6) {
-                operter.append($("<button onclick='deleteOrder(" + data[i].id + ")' >删除</button>"));
+                operter.append($("<button onclick='deleteOrder(" + data[i].id + ")' class='btn' style='background-color:black;color:white;'>删除</button>"));
             }
             tr.append(operter);
             tr.append($("<td></td>")
