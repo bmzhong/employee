@@ -141,6 +141,13 @@ public class OrderServiceImpl implements OrderService {
             throw new RuntimeException("订单不存在");
         orderDao.updateState(WAIT_TO_SEND,order.getId());
     }
+    @Override
+    public void beginSending(int orderId){
+        Order order = orderDao.findOne(orderId);
+        if (order == null)
+            throw new RuntimeException("订单不存在");
+        orderDao.updateState(SENDING,order.getId());
+    }
 
     /**
      * 提交订单

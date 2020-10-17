@@ -103,6 +103,8 @@ public interface OrderService {
 
     void receiveOrder(int orderId);
 
+    void beginSending(int orderId);
+
      void requestSending(int orderId);
     /**
      * 提交订单

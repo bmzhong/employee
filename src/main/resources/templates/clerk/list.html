@@ -166,11 +166,8 @@
             // tr.append($("<td width='100'>" + status + "</td>"));
 
             var operter = $("<td></td>");
-            if (state === 1) {
-                operter.append($("<button  onclick='receive_order(" + data[i].id + ",this)'  class='btn red'>接收订单</button>"));
-            }
-            if (state === 3) {
-                operter.append($("<button  onclick='request_sending(" + data[i].id + ",this)'  class='btn green'>请求送餐</button>"));
+            if (state === 4) {
+                operter.append($("<button  onclick='begin_sending(" + data[i].id + ",this)'  class='btn red'>开始送餐</button>"));
             }
             tr.append(operter);
             tr.append($("<td></td>")
@@ -217,39 +214,17 @@
             }
         });
     }
-function receive_order(oid, btn) {
+function begin_sending(oid, btn) {
     if (!oid) {
         alert("订单编号为空");
         return;
     }
     $.ajax({
-        url: "/mall/employee/order/receive_order.do?orderId=" + oid,
+        url: "/mall/clerk/order/begin_sending.do?orderId=" + oid,
         type: "get",
         success: function (result) {
             if (result.state === 0) {
-                alert("您已接收订单！");
-                loadData();
-            } else {
-                alert(result.message);
-            }
-        },
-        error: function () {
-            alert("连接错误！");
-        }
-    });
-}
-function request_sending(oid, btn) {
-    if (!oid) {
-        alert("订单编号为空");
-        return;
-    }
-    $.ajax({
-        url: "/mall/employee/order/request_sending.do?orderId=" + oid,
-        type: "get",
-        success: function (result) {
-            if (result.state === 0) {
-                alert("正在等待送餐员送餐！");
-                // $(btn).parent().html("等待送餐");
+                alert("您可以开始送餐了！");
                 loadData();
             } else {
                 alert(result.message);
