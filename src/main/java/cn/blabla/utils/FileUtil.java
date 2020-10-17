@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.security.MessageDigest;
+import java.util.Random;
 
 public class FileUtil {
 
@@ -27,7 +28,10 @@ public class FileUtil {
         String originalFilename = file.getOriginalFilename();
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(file.getBytes());
-        String fileName = (Helper.bytesToHex(md.digest(),0,md.digest().length-1)) + "." + getPostfix(originalFilename);
+        long w = 100000000;
+        long  r = (long) ((Math.random() + 1) * w);
+        String str = String.valueOf(r);
+        String fileName = (Helper.bytesToHex(md.digest(),0,md.digest().length-1))+str + "." + getPostfix(originalFilename);
         File file1 = new File(target.getPath() + "/" + fileName);
         Files.write(Paths.get(file1.toURI()), file.getBytes(), StandardOpenOption.CREATE_NEW);
         return "/mall/admin/product/img/" + fileName;

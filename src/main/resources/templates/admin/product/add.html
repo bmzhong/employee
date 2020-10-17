@@ -22,14 +22,14 @@
 <body>
 <div class="container-fluid">
     <div class="row-fluid">
-        <h3 class="page-title"><i class="fa fa-shopping-bag"></i> 商品管理</h3>
+        <h3 class="page-title"><i class="fa fa-shopping-bag"></i> 菜单管理</h3>
         <ul class="breadcrumb">
             <li>
-                <a href="list.html"><i class="fa fa-home"></i>商品管理</a>
+                <a href="list.html"><i class="fa fa-home"></i>菜单管理</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="#">添加商品</a>
+                <a href="#">添加菜品</a>
             </li>
         </ul>
     </div>
@@ -38,20 +38,20 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-reorder"></i>
-                    添加商品
+                    添加菜品
                 </div>
             </div>
             <div class="portlet-body">
                 <form class="form-horizontal" enctype="multipart/form-data" method="post" action="add.do">
                     <div class="control-group">
-                        <label class="control-label">商品名称：</label>
+                        <label class="control-label">菜品名称：</label>
                         <div class="controls">
                             <input name="title" type="text" class="m-wrap large"/>
                             <span class="help-inline">name</span>
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label">是否热门：</label>
+                        <label class="control-label">是否特价：</label>
                         <div class="controls">
                             <select name="isHot" class="small m-wrap small">
                                 <option value="1">是</option>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label">市场价格：</label>
+                        <label class="control-label">价格：</label>
                         <div class="controls">
                             <div class="input-prepend">
                                 <span class="add-on">￥</span>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label">商城价格：</label>
+                        <label class="control-label">今日价格：</label>
                         <div class="controls">
                             <div class="input-prepend">
                                 <span class="add-on">￥</span>
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">商品图片：</label>
+                        <label class="control-label">菜品图片：</label>
                         <div class="controls">
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label">商品描述：</label>
+                        <label class="control-label">菜品描述：</label>
                         <div class="controls">
                             <textarea name="desc" class="m-wrap large" rows="4"></textarea>
                         </div>

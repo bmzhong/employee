@@ -21,12 +21,15 @@
 <body>
 <div class="container-fluid">
     <div class="row-fluid">
-        <h3 class="page-title"><i class="fa fa-file-text"></i> 订单管理</h3>
+        <h3 class="page-title">
+            <a class="fa fa-file-text" href="/mall">回到首页</a>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <i class="fa fa-file-text"></i> 送餐员订单管理</h3>
         <ul class="breadcrumb">
-            <li>
-                <a href="#"><i class="fa fa-home"></i>订单管理</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
+            <!--            <li>-->
+            <!--                <a href="#"><i class="fa fa-home"></i>订单管理</a>-->
+            <!--                <i class="fa fa-angle-right"></i>-->
+            <!--            </li>-->
             <li>
                 <a href="#">订单列表</a>
             </li>
@@ -41,7 +44,7 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <table id="orderTable" class="table table-advance table-hover"  width="100%"  style="table-layout:fixed">
+                <table id="orderTable" class="table table-advance table-hover" width="100%" style="table-layout:fixed">
                     <thead>
                     <tr>
                         <th>订单编号</th>
@@ -77,11 +80,12 @@
 <script th:src="@{/layui/layui.js}"></script>
 <script th:inline="javascript" type="text/javascript">
 
-//    <![CDATA[
+    //    <![CDATA[
     $(function () {
         loadData();
     });
-    function loadData(){
+
+    function loadData() {
         var pagetotal;
         $(function () {
             App.init();
@@ -214,39 +218,19 @@
             }
         });
     }
-function begin_sending(oid, btn) {
-    if (!oid) {
-        alert("订单编号为空");
-        return;
-    }
-    $.ajax({
-        url: "/mall/clerk/order/begin_sending.do?orderId=" + oid,
-        type: "get",
-        success: function (result) {
-            if (result.state === 0) {
-                alert("您可以开始送餐了！");
-                loadData();
-            } else {
-                alert(result.message);
-            }
-        },
-        error: function () {
-            alert("连接错误！");
-        }
-    });
-}
-/*    function send(oid, btn) {
+
+    function begin_sending(oid, btn) {
         if (!oid) {
             alert("订单编号为空");
             return;
         }
         $.ajax({
-            url: "/mall/admin/order/send.do?id=" + oid,
+            url: "/mall/clerk/order/begin_sending.do?orderId=" + oid,
             type: "get",
             success: function (result) {
-                if (result.state == 0) {
-                    alert("发货成功！");
-                    $(btn).parent().html("等待收货");
+                if (result.state === 0) {
+                    alert("您可以开始送餐了！");
+                    loadData();
                 } else {
                     alert(result.message);
                 }
@@ -255,8 +239,30 @@ function begin_sending(oid, btn) {
                 alert("连接错误！");
             }
         });
-    }*/
-//    ]]>
+    }
+
+    /*    function send(oid, btn) {
+            if (!oid) {
+                alert("订单编号为空");
+                return;
+            }
+            $.ajax({
+                url: "/mall/admin/order/send.do?id=" + oid,
+                type: "get",
+                success: function (result) {
+                    if (result.state == 0) {
+                        alert("发货成功！");
+                        $(btn).parent().html("等待收货");
+                    } else {
+                        alert(result.message);
+                    }
+                },
+                error: function () {
+                    alert("连接错误！");
+                }
+            });
+        }*/
+    //    ]]>
 </script>
 </body>
 

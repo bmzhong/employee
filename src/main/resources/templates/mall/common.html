@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>校园二手商品电子商务系统</title>
+    <title>外卖订餐系统</title>
 </head>
 <body>
 <!--
@@ -21,8 +21,8 @@
     </script>
     <div class="navbar navbar-default layui-main">
         <div class="logo">
-            <a class="" href="/mall/user/toJump.html" style="margin-left: 1px;font-size: 18px;color: white;">
-                论坛&nbsp;&nbsp;&nbsp;</a>
+<!--            <a class="" href="/mall/user/toJump.html" style="margin-left: 1px;font-size: 18px;color: white;">-->
+<!--                论坛&nbsp;&nbsp;&nbsp;</a>-->
             <a class="" href="/mall/index.html" style="margin-left: 1px;font-size: 18px;color: white;">
                 首页&nbsp;
             </a>
@@ -69,8 +69,8 @@
                     <dd th:if="${session.user != null}"><a href="/mall/user/logout.do"><i class="fa fa-sign-out"></i> 退出登录</a></dd>
                     <dd th:if="${session.user != null}"><a href="/mall/order/toList.html"><i class="fa fa-list"></i> 我的订单</a></dd>
                     <dd th:if="${session.user != null}"><a href="/mall/product/toCart.html"><i class="fa fa-shopping-cart"></i> 购物车</a></dd>
-                    <dd th:if="${session.user != null}"><a href="/mall/user/toAdd.html"><i class="fa fa-plus"></i>发布商品</a></dd>
-                    <dd th:if="${session.user != null}"><a href="/mall/user/toJump.html"><i class="fa fa-commenting"></i>论坛</a></dd>
+<!--                    <dd th:if="${session.user != null}"><a href="/mall/user/toAdd.html"><i class="fa fa-plus"></i>发布商品</a></dd>-->
+                    <dd th:if="${session.user != null}"><a href="/mall/user/toJump.html"><i class="fa fa-commenting"></i>投诉</a></dd>
                     <dd th:if="${session.user == null}"><a href="/mall/user/toLogin.html"><i class="fa fa-sign-in"></i> 登录</a></dd>
                     <dd th:if="${session.user == null}"><a href="/mall/user/toRegister.html"><i class="fa fa-user-plus"></i> 注册</a></dd>
                 </dl>
@@ -85,8 +85,9 @@
 <div class="footer footer-index" th:fragment="foot">
     <hr style="color: #c2c2c2;" />
     <!-- 底部固定区域 -->
-    © 2019 梦里京华
-    <a href="/mall/admin/toLogin.html">校园二手商品交易平台后台管理</a>
+    <a href="/mall/admin/toLogin.html">后台管理</a>
+    <a href="/mall/employee/toList">餐厅员工</a>
+    <a href="/mall/clerk/toList">送餐员</a>
 </div>
 
 </body>
