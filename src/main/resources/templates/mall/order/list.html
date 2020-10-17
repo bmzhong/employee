@@ -46,7 +46,7 @@
                         <th>地址</th>
                         <th>总价</th>
                         <th>状态</th>
-                        <th>操作</th>
+                        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作</th>
                     </tr>
                     </thead>
                     <tbody id="list">
@@ -114,7 +114,7 @@
                     operter.append($("<button onclick='pay(" + item.id + ")' class='layui-btn layui-btn-radius layui-btn-green'>付款</button>"));
                 }
                 if (state ==4) {
-                    operter.append($("<a onclick='deleteOrder(" + item.id + ")' >删除</a>"));
+                    operter.append($("<button onclick='deleteOrder(" + item.id + ")' class='layui-btn layui-btn-radius layui-btn-green'>删除</button>"));
                 }
                /*  if (state == 1 ) {
                     operter.append($("<a onclick='deleteOrder(" + item.id + ")' >取消订单</a>"));
