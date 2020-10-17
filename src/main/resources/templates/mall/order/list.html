@@ -66,7 +66,7 @@
 
         // 加载我的订单列表
         function loadOrder() {
-            $.get("templates.clerk.list.do", function (data) {
+            $.get("list.do", function (data) {
                 if (data.state == 0) {
                     var tbody = $("#list");
                     appendToPage(data.data, tbody);
@@ -191,9 +191,9 @@
             });
 
         }
-        
+
         function deleteOrder(id){
-        	layer.confirm('您确认删除吗？', {
+            layer.confirm('您确认删除吗？', {
                 btn: ['确定','取消'] //按钮
             }, function(){
                 $.get("deleteOrder.do?orderId=" + id, function (data) {
@@ -206,8 +206,8 @@
                     }
                 });
             });
-        }  
-        
+        }
+
 
         //            ]]>
     </script>

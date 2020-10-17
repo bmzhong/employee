@@ -1,6 +1,5 @@
 package cn.blabla.web.user;
 
-
 import cn.blabla.entity.User;
 import cn.blabla.entity.pojo.ResultBean;
 import cn.blabla.service.UserService;

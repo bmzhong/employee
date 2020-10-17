@@ -132,7 +132,7 @@
     function pageselectCallback(page_index, jq) {
         $.ajax({
             type: "get",
-            url: "templates.clerk.list.do?type=2&pageindex=" + page_index,
+            url: "list.do?type=2&pageindex=" + page_index,
             success: function (result) {
                 if (result.state == 0) {
                     showList(result.data);
