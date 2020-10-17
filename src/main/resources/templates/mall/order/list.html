@@ -111,10 +111,10 @@
 
                 var operter = $("<td ></td>");
                 if (state === 5) {
-                    operter.append($("<button onclick='recieve(" + item.id + ")' class='layui-btn layui-btn-radius layui-btn-danger'>确认收货</button>"));
+                    operter.append($("<button onclick='recieve(" + item.id + ")' class='layui-btn layui-btn-radius layui-bg-red'>确认收货</button>"));
                 }
                 if (state === 2) {
-                    operter.append($("<button onclick='pay(" + item.id + ")' class='layui-btn layui-btn-radius layui-btn-green'>付款</button>"));
+                    operter.append($("<button onclick='pay(" + item.id + ")' class='layui-btn layui-btn-radius layui-btn-red' style='background-color: fuchsia'>付款</button>"));
                 }
                 if (state === 6) {
                     operter.append($("<button onclick='deleteOrder(" + item.id + ")' class='layui-btn layui-btn-radius layui-bg-black'>删除</button>"));

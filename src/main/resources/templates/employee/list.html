@@ -167,7 +167,7 @@
 
             var operter = $("<td></td>");
             if (state === 1) {
-                operter.append($("<button  onclick='receive_order(" + data[i].id + ",this)'  class='btn red'>接收订单</button>"));
+                operter.append($("<button  onclick='receive_order(" + data[i].id + ",this)'  class='btn' style='background-color: orangered'>接收订单</button>"));
             }
             if (state === 3) {
                 operter.append($("<button  onclick='request_sending(" + data[i].id + ",this)'  class='btn green'>请求送餐</button>"));
