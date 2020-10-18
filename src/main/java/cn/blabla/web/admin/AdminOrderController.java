@@ -36,7 +36,7 @@ public class AdminOrderController {
     @ResponseBody
     @RequestMapping("/getTotal.do")
     public ResultBean<Integer> getTotal() {
-        Pageable pageable = new PageRequest(1, 15, null);
+        Pageable pageable = new PageRequest(1, 7, null);
         int total = (int) orderService.findAll(pageable).getTotalElements();
         return new ResultBean<>(total);
     }

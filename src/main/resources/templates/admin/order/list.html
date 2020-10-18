@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <table id="orderTable" class="table table-advance table-hover"  width="100%"  style="table-layout:fixed">
+                <table id="orderTable" class="table table-advance table-hover" width="100%" style="table-layout:fixed">
                     <thead>
                     <tr>
                         <th>订单编号</th>
@@ -81,7 +81,8 @@
     $(function () {
         loadData();
     });
-    function loadData(){
+
+    function loadData() {
         var pagetotal;
         $(function () {
             App.init();
@@ -214,6 +215,8 @@
                     for (var i = 0; i < result.data.length; i++) {
                         var item = result.data[i];
                         var tr = $("<tr></tr>");
+                        // var temp = JSON.stringify(item);
+                        // alert(temp);
                         tr.append($("<td><img style='display: block;height: 50px;max-width: 100%;' src='" + item.product.image + "'/></td>"));
                         tr.append($("<td ></td>").text(item.product.title));
                         tr.append($("<td></td>").text(item.count + "件"));
@@ -229,6 +232,7 @@
             }
         });
     }
+
     function receive_order(oid, btn) {
         if (!oid) {
             alert("订单编号为空");
@@ -250,6 +254,7 @@
             }
         });
     }
+
     function request_sending(oid, btn) {
         if (!oid) {
             alert("订单编号为空");
@@ -272,6 +277,7 @@
             }
         });
     }
+
     function begin_sending(oid, btn) {
         if (!oid) {
             alert("订单编号为空");
@@ -293,54 +299,67 @@
             }
         });
     }
+
     //付款
     function pay(id) {
-        $.get("pay.do?orderId=" + id, function (data) {
-            if (data.state == 0) {
-                layer.msg("付款成功！");
-                window.setTimeout(function () {
-                    window.location.reload();
-                },500);
-            } else {
-                layer.msg(data.message);
-            }
+        $(function () {
+            $.get("/mall/order/pay.do?orderId=" + id, function (data) {
+                // alert("付款");
+                if (data.state == 0) {
+                    alert("付款成功！");
+                    window.setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
+                } else {
+                    alert("付款失败！");
+                    // layer.msg(data.message);
+                }
+            })
         });
 
     }
 
     //确认收货
     function receive(id) {
-        layer.confirm('您确认已经收到货了吗？', {
-            btn: ['确定','取消'] //按钮
-        }, function(){
-            $.get("receive.do?orderId=" + id, function (data) {
+        // layer.confirm('您确认已经收到货了吗？', {
+        //     btn: ['确定','取消'] //按钮
+        // },
+        $(function () {
+
+            $.get("/mall/order/receive.do?orderId=" + id, function (data) {
+                // alert("确认收货");
                 if (data.state == 0) {
                     window.setTimeout(function () {
                         window.location.reload();
-                    },500);
+                    }, 500);
+                } else {
+                    layer.msg(data.message);
+                }
+            })
+            // );
+            // });
+        })
+    }
+
+    // };
+
+    function deleteOrder(id) {
+        // layer.confirm('您确认删除吗？', {
+        //     btn: ['确定','取消'] //按钮
+        // },
+        $(function () {
+            $.get("/mall/order/deleteOrder.do?orderId=" + id, function (data) {
+                if (data.state == 0) {
+                    window.setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
                 } else {
                     layer.msg(data.message);
                 }
             });
         });
-
     }
 
-    function deleteOrder(id){
-        layer.confirm('您确认删除吗？', {
-            btn: ['确定','取消'] //按钮
-        }, function(){
-            $.get("deleteOrder.do?orderId=" + id, function (data) {
-                if (data.state == 0) {
-                    window.setTimeout(function () {
-                        window.location.reload();
-                    },500);
-                } else {
-                    layer.msg(data.message);
-                }
-            });
-        });
-    }
     /*    function send(oid, btn) {
             if (!oid) {
                 alert("订单编号为空");
