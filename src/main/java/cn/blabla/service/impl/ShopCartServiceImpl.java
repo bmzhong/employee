@@ -11,10 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
-/**
- * @author hfb
- * @date 2017/11/21
- */
 @Service
 public class ShopCartServiceImpl implements ShopCartService {
 
@@ -97,7 +93,7 @@ public class ShopCartServiceImpl implements ShopCartService {
                 int count = orderItem.getCount();
                 orderItem.setCount(++count);
                 Double subTotal = orderItem.getSubTotal();
-                orderItem.setSubTotal(orderItem.getSubTotal()+subTotal);
+                orderItem.setSubTotal(orderItem.getSubTotal()+subTotal/(count-1));
                 productMap.put(productId, orderItem);
             }
         }
